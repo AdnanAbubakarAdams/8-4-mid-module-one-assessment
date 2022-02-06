@@ -26,7 +26,14 @@ const animals = [
  * getTotalCount(animals); //> 28
  * getTotalCount([]); //> 0 // returns 0 if the input array is empty
  */
-function getTotalCount(animals) {}
+function getTotalCount(animals) {
+  let sum = 0;
+  for (let i = 0; i < animals.length; i++){
+    sum = sum + animals[i].count;
+    // console.log(sum);
+  }
+  return sum;
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -40,7 +47,14 @@ function getTotalCount(animals) {}
  * getAllKinds(animals); //> ["Pig", "Cow", "Chicken", "Horse", "Dog", "Cat"]
  * getAllKinds([]); //> [] // returns empty array if input array is empty
  */
-function getAllKinds(animals) {}
+function getAllKinds(animals) {
+  let newArr = [];
+  for(let i = 0; i < animals.length; i++){
+    newArr.push(animals[i].kind);
+    // console.log(newArr);
+  }
+  return newArr;
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -59,7 +73,16 @@ function getAllKinds(animals) {}
   ];
  * filterByCountMinimum([], 3); //> [] // returns empty array if input array is empty
  */
-function filterByCountMinimum(animals, minimum) {}
+function filterByCountMinimum(animals, minimum) {
+  let newGroup = [];
+  for (let i = 0; i < animals.length; i++){
+    if (animals[i].count >= minimum){
+      newGroup.push(animals[i]);
+      // console.log(newGroup);
+    }
+  }
+  return newGroup;
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -73,7 +96,22 @@ function filterByCountMinimum(animals, minimum) {}
  * getMostCommonAnimal(animals); //> { kind: "Chicken", count: 11 }
  * getMostCommonAnimal([]); //> null // returns null if the input is empty
  */
-function getMostCommonAnimal(animals) {}
+function getMostCommonAnimal(animals) {
+  // Using Gigi's default of starting at [0] index of an array.
+  // I was stuck in between setting my highestcount to either null or the object am returning && came across this page https://www.samanthaming.com/tidbits/52-3-ways-to-set-default-value/
+  // I just never knew you could set a default with two values, googled and saw it and it worked for me, but will love some more clarification on that. Thank you.
+  let highestCount = animals[0] || null;
+  for (let i = 0; i < animals.length; i++){
+    if (animals[i].count > highestCount.count){
+      highestCount = animals[i];
+      // console.log(highestCount);
+    }
+    // else {
+      // return null;
+    // }
+  }
+  return highestCount;
+}
 
 // Do not change anything below this line.
 module.exports = {
